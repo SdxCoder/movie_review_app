@@ -3,7 +3,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movies_review_app/core/repository_contracts/movie_reviews_repository.dart';
+import 'package:movies_review_app/core/repository_contracts/movie_reviews_repository_interface.dart';
+
 import 'package:movies_review_app/features/movie_reviews/domain/entities/movie_review_entity/movie_review.dart';
 import 'package:movies_review_app/features/movie_reviews/domain/usecases/get_movie_reviews.dart';
 
