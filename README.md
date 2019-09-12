@@ -1,6 +1,16 @@
 # movies_review_app
 
-A new Flutter project.
+A simple application which allows user to see the reviews of the movie. 
+
+# Clean Coding Architecture
+
+Primary focus of this project is to help you understand how to write clean, non-cluttered, maintainable and scalable code.
+The approach followed is test driven approach. Learn more on flutter automated tests https://flutter.dev/docs/testing 
+The architecture constitues of following layers
+  # Presentation Layer
+  # Domain Layer
+  # Data Layer
+
 
 ## Getting Started
 
