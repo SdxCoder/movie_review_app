@@ -7,9 +7,9 @@ A simple application which allows user to see the reviews of the movie.
 Primary focus of this project is to help you understand how to write clean, non-cluttered, maintainable and scalable code.
 The approach followed is test driven approach. Learn more on flutter automated tests https://flutter.dev/docs/testing 
 The architecture constitues of following layers
-  # Presentation Layer
-  # Domain Layer
-  # Data Layer
+  ### Presentation Layer
+  ### Domain Layer
+  ### Data Layer
 
 
 ## Getting Started
