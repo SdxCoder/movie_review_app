@@ -1,4 +1,4 @@
-# Movies Reviewer
+# Movie Reviews
 
 A simple application which allows user to see the reviews of the movie. 
 
