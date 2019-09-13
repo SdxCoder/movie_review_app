@@ -3,8 +3,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movies_review_app/core/repository_contracts/movie_reviews_repository_interface.dart';
-
+import 'package:movies_review_app/core/repository/movie_reviews_repository_interface.dart';
 import 'package:movies_review_app/features/movie_reviews/domain/entities/movie_review_entity/movie_review.dart';
 import 'package:movies_review_app/features/movie_reviews/domain/usecases/get_movie_reviews.dart';
 
@@ -20,7 +19,7 @@ void main(){
     getMovieReviews = GetMovieReviews(iMovieReviewRepository: mockMovieReviewsRepository);
   });
 
-  final MovieReview movieReview = MovieReview(summary: "test",headline: "test headline", displayTitle: "test title");
+  final List<MovieReview> movieReview = [MovieReview(summary: "test",headline: "test headline", displayTitle: "test title")];
 
 
   test("should return movie reviews", () async{
