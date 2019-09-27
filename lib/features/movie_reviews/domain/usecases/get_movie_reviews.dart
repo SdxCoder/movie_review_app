@@ -14,12 +14,8 @@ class GetMovieReviews extends Equatable{
   GetMovieReviews({@required this.iMovieReviewRepository}) : super([iMovieReviewRepository]);
 
 
-  Future<Either<IFailure, List<MovieReview>>> execute({@required movieName}) async{
-    if(movieName == null){
-      return null;
-    }
-      
-    return iMovieReviewRepository.getMovieReviews(movieName);
+  Future<Either<IFailure, List<MovieReview>>> execute({@required movieName}) async{    
+     return iMovieReviewRepository.getMovieReviews(movieName);
   }
 
 }

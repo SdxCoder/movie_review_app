@@ -36,19 +36,6 @@ void main(){
 
   });
 
-   test("should return failure if movie name is null", () async{
-    // arrange
-    when(mockMovieReviewsRepository.getMovieReviews(any)).thenAnswer((_) async {
-      return Right(movieReview);
-    });
-    // act
-     final result = await getMovieReviews.execute(movieName : null);
-
-    //assert
-    expect(result, null);
-    verifyNever(mockMovieReviewsRepository.getMovieReviews(null));
-
-  });
 
 
 }
