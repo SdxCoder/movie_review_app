@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_review_app/core/error/exceptions_interface.dart';
 import 'package:movies_review_app/core/error/failure_interface.dart';
-import 'package:movies_review_app/core/platform/network_info_interface.dart';
 import 'package:movies_review_app/core/repository/movie_reviews_repository_interface.dart';
+import 'package:movies_review_app/core/shared_services/network_info.dart';
 import 'package:movies_review_app/features/movie_reviews/data/data%20sources/movie_reviews_local_datasource.dart';
 import 'package:movies_review_app/features/movie_reviews/data/data%20sources/movie_reviews_remote_datasource.dart';
 import 'package:movies_review_app/features/movie_reviews/domain/entities/movie_review_entity/movie_review.dart';

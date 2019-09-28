@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movies_review_app/core/error/exceptions_interface.dart';
 import 'package:movies_review_app/core/error/failure_interface.dart';
-import 'package:movies_review_app/core/platform/network_info_interface.dart';
+import 'package:movies_review_app/core/shared_services/network_info.dart';
 import 'package:movies_review_app/features/movie_reviews/data/data%20sources/movie_reviews_local_datasource.dart';
 import 'package:movies_review_app/features/movie_reviews/data/data%20sources/movie_reviews_remote_datasource.dart';
 import 'package:movies_review_app/features/movie_reviews/data/models/movie_reviews_model.dart';
@@ -102,7 +102,7 @@ void main(){
     });
 
 
-     test('should return Cache Failure cache data is not present', () async {
+     test('should return Cache Failure when cache data is not present', () async {
       when(mockMovieReviewLocalDS.getLastMovieReviews()).thenThrow(CacheException());
 
       final actual = await movieReviewRepository.getMovieReviews(movieName);
@@ -110,8 +110,6 @@ void main(){
       verifyZeroInteractions(mockMovieReviewRemoteDS);
       expect(actual, Left(CacheFailure()));
     });
-
-
 
   });
 
