@@ -8,7 +8,9 @@ abstract class INetworkInfo {
 
 class NetworkInfo implements INetworkInfo{
 
-  final DataConnectionChecker dataConnectionChecker = DataConnectionChecker();
+  final DataConnectionChecker dataConnectionChecker;
+
+  NetworkInfo(this.dataConnectionChecker);
 
   @override
   Future<bool> getConnectivityStatus() async {

@@ -12,7 +12,7 @@ class MovieReviewModel extends MovieReview {
     return MovieReviewModel(
       displayTitle : json['displayTitle'].toString(),
       headline: json['headline'].toString(),
-      summary : json['summary'].toString()
+      summary : json['summary_short'].toString()
     );
   } 
 
