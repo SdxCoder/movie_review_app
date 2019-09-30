@@ -27,8 +27,9 @@ class MovieReviewRemoteDataSource implements IMovieReviewRemoteDataSource{
     await client
             .get(Uri.parse(_url.replaceFirst("{movie}", movieName)))
             .then((response) {
-              if(response.statusCode == 200) return response.body;
-              throw ServerException();
+              if(response.statusCode == 200) {return response.body;}
+              else { throw ServerException(); }
+              
             })
             .then(json.decode)
             .then((json) => json['results'].forEach((map) => movieReviews.add(MovieReviewModel.fromJson(map))));

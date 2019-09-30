@@ -34,6 +34,7 @@ dependencies:
   shared_preferences: ^0.5.3+4
   # Device online status checker
   data_connection_checker: ^0.3.4
+  logger: ^0.7.0+2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

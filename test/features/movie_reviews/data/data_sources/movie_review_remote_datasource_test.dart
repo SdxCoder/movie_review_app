@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:matcher/matcher.dart';
 import 'package:http/http.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -41,6 +41,19 @@ void main(){
     verify(mockHttpClient.get(url));
     expect(actual, list);
    
+  });
+
+
+  test('should throw server exception when status code is not 200', () async {
+     final response1 = Response(fixtureReader('response.json'), 400);
+    when(mockHttpClient.get(url)).thenAnswer((_) async {
+      return response1;
+    });
+
+    final call = movieReviewRemoteDataSource.getMoviewReviews;
+
+
+    expect( () => call(movie), throwsA(TypeMatcher<ServerException>()));
   });
 
 
