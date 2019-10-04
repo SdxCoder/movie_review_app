@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:movies_review_app/core/error/exceptions_interface.dart';
 import 'package:movies_review_app/core/error/failure_interface.dart';
 import 'package:movies_review_app/core/shared_widgets/base_widget.dart';
+import 'package:movies_review_app/features/movie_reviews/domain/usecases/get_movie_reviews.dart';
 import 'package:movies_review_app/features/movie_reviews/presentation/view_models/movie_review_view_model.dart';
+import 'package:movies_review_app/locator.dart';
 
 class MovieReviewsView extends StatefulWidget {
   const MovieReviewsView({Key key}) : super(key: key);
@@ -17,7 +19,7 @@ class _MovieReviewsViewState extends State<MovieReviewsView> {
   @override
   Widget build(BuildContext context) {
     return BaseWidget(
-      model: MovieReviewsViewModel(moviewReviewsUsecase: null),
+      model: MovieReviewsViewModel(moviewReviewsUsecase: locator<GetMovieReviews>()),
       child: null,
       onReadyModel: null,
       builder: (context, model, child) {
@@ -29,8 +31,7 @@ class _MovieReviewsViewState extends State<MovieReviewsView> {
           body: Column(
             children: <Widget>[
                _searchMoviesBtn(context, model),
-               (model.reviews == null) ? _buildMoviesList(model) : _showError(context, model),
-             
+               (model.reviews != null) ? _buildMoviesList(model) : _showError(context, model),
             ],
           ),
         );
@@ -40,13 +41,15 @@ class _MovieReviewsViewState extends State<MovieReviewsView> {
 
   Widget _showError(context, model){
     if(model.error is IFailure){
-      return Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.5,
-          child: Text(model.error.msg),
-        ),
+      return Container(
+        padding: EdgeInsets.only(top: 30),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Text(model.error.msg),
       );
+    }
+    else{
+      return Center(child: Text("Search movie reviews"));
     }
   }
 
@@ -55,7 +58,12 @@ class _MovieReviewsViewState extends State<MovieReviewsView> {
       child: ListView.builder(
         itemCount: model.reviews.length,
         itemBuilder: (BuildContext context, int index) {
-          return Text("$index");
+          return Column(
+            children: <Widget>[
+              Text("${model.reviews[index].summary}"),
+              Image.network("${model.reviews[index].summary}")
+            ],
+          );
         },
       ),
     );

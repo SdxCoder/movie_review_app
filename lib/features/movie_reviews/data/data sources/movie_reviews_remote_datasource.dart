@@ -18,8 +18,8 @@ class MovieReviewRemoteDataSource implements IMovieReviewRemoteDataSource{
 
   MovieReviewRemoteDataSource({@required this.client});
 
-  static const String _url =  "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={movie}&api-key=qXHNnL5cFu1okFi3dfBCkPtEIJ28KC8V";
-
+  // static const String _url =  "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query={movie}&api-key=qXHNnL5cFu1okFi3dfBCkPtEIJ28KC8V";
+     static const String _url = "http://www.omdbapi.com/?s={movie}&apikey=d4657ac9";
   @override
   Future<List<MovieReviewModel>> getMoviewReviews(String movieName) async {
     List<MovieReviewModel> movieReviews = [];
@@ -32,7 +32,12 @@ class MovieReviewRemoteDataSource implements IMovieReviewRemoteDataSource{
               
             })
             .then(json.decode)
-            .then((json) => json['results'].forEach((map) => movieReviews.add(MovieReviewModel.fromJson(map))));
+            .then(
+              (json) {
+                if(json['Search'] == null) throw ServerException();
+                json['Search'].forEach((map) => movieReviews.add(MovieReviewModel.fromJson(map)));
+              }
+              );
             
     return movieReviews;
   }

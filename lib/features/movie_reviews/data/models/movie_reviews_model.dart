@@ -10,18 +10,18 @@ class MovieReviewModel extends MovieReview {
 
   factory MovieReviewModel.fromJson(Map<String, dynamic> json){
     return MovieReviewModel(
-      displayTitle : json['displayTitle'].toString(),
+      displayTitle : json['Title'].toString(),
       headline: json['headline'].toString(),
-      summary : json['summary_short'].toString()
+      summary : json['Poster'].toString()
     );
   } 
 
 
    Map<String, dynamic> toJson(){
     return {
-      'displayTitle' : this.displayTitle,
+      'Title' : this.displayTitle,
       'headline' : this.headline,
-      'summary' : this.summary
+      'Poster' : this.summary
     };
   }
 
